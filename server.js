@@ -5,6 +5,8 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const passport = require('passport')
 
+const User = require('./routes/User')
+
 // Initialize Server, Port and DB Setup
 const Server = express()
 const Port = process.env.port || 4000
@@ -19,7 +21,7 @@ mongoose.connection.on('error', () => {
 // Middleware
 Server.use(cors()) // Cross site requests. Basically we can call the API from our react frontend on a different port
 Server.use(bodyParser.json()) // Adds a body to the request so we can send data in json format
-
+Server.use('/user', User)
 
 // Start Server
 Server.listen(Port, (err) => {
