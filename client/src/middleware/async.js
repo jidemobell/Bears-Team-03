@@ -13,5 +13,5 @@ export default ({ dispatch }) => {
       }
       dispatch(newAction)
     })
-  }
+  } 
 }
