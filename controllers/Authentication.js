@@ -38,11 +38,27 @@ module.exports.createUser= (req, res, next) => {
   })
 }
 
-
 // Sign In User
 module.exports.signIn = (req, res) => {
   res.json({
     success: true,
     token: userToken(req.user)
+  })
+}
+
+// User Dashboard
+module.exports.userDashboard = (req, res) => {
+  User.findOne({ '_id': req.user._id }, (err, user) => {
+    if(err) {
+      res.json({
+        success: false,
+        error: err
+      })
+    } else {
+        res.json({
+          success: true,
+          user: user
+        })
+    }
   })
 }

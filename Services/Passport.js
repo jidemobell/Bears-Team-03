@@ -39,8 +39,8 @@ const jwtOptions = {
 }
 
 // Create JWT Strategy
-const jwtLogin = new JwtStrategy(jwtOptions, (pyload, done) => {
-  User.findById(payload.sub, (err, user) => {
+const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
+  User.findById(payload.sub, { password: 0 }, (err, user) => {
     if(err) { return done(err, false) }
 
     if(user) { return done(null, user) }
