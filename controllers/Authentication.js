@@ -37,3 +37,12 @@ module.exports.createUser= (req, res, next) => {
     })
   })
 }
+
+
+// Sign In User
+module.exports.signIn = (req, res) => {
+  res.json({
+    success: true,
+    token: userToken(req.user)
+  })
+}
