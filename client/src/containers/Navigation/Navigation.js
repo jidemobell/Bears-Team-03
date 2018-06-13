@@ -1,20 +1,35 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import Links from '../../components/UI/Links/Links';
 
 const NavLinks = [
-  { name: 'Home', url: '/home', class: 'icon' , auth: false },
-  { name: 'About', url: '/about', class: 'icon' , auth: false },
-  { name: 'Sign Up', url: '/signup', class: 'icon' , auth: false, loggedIn: false },
-  { name: 'Sign In', url: '/signin', class: 'icon' , auth: false, loggedIn: false },
-  { name: 'Dashboard', url: '/dashboard', class: 'icon' , auth: true }
+  { name: 'Home', url: '/home', class: 'icon' },
+  { name: 'About', url: '/about', class: 'icon'  },
+  { name: 'Sign Up', url: '/signup', class: 'icon', protected: false  },
+  { name: 'Sign In', url: '/signin', class: 'icon', protected: false  },
+  { name: 'Dashboard', url: '/dashboard', class: 'icon', protected: true  }
 ]
-
+ 
   class Navigation extends Component {
+    // Checks to see if the user is authenticated. If so it will hide login / sign up links
+    AuthLinks = NavLinks.map(link => {
+      if(this.props.authenticated && link.protected === false) {
+        link.userLoggedIn = this.props.authenticated
+      }
+      return link
+    })
+
+    // TODO: Links not refreshing until browser refresh
+
     render() {
       return(
-        <Links Links={NavLinks}/>
+        <Links Links={this.AuthLinks}/>
       )
     }
   }
 
-export default Navigation
+  const mapStatetToProps = (state) => {
+    return { authenticated: state.user.authenticated }
+  }
+export default connect(mapStatetToProps)(Navigation)

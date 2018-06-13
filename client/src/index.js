@@ -11,9 +11,15 @@ import reduxThunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
 import Async from './middleware/async'
 import history from './hoc/History/History'
+import { LOGGED_IN } from './actions/types'
 
 const stroeMiddleware = applyMiddleware(Async, reduxThunk)(createStore)
 const store = stroeMiddleware(rootReducer)
+
+const token = localStorage.getItem('token')
+if(token) {
+   store.dispatch({ type: LOGGED_IN })
+}
 
 ReactDOM.render(
   <Provider store={store}>
