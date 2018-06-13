@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const beuatifyUnique = require('mongoose-beautiful-unique-validation')
 
 const UserSchema = mongoose.Schema({
   firstName: {
@@ -24,6 +25,8 @@ const UserSchema = mongoose.Schema({
     required: true
   }
 })
+
+UserSchema.plugin(beuatifyUnique)
 
 const User = module.exports = mongoose.model('User', UserSchema)
 

@@ -28,11 +28,18 @@ module.exports.createUser= (req, res, next) => {
       newUser.password = hash 
 
       User.createUser(newUser, (err, user) => {
-        if(err) { return next(err) }
+        if(err) {
           res.json({
-            success: true,
-            token: userToken(user)
+            success: false,
+            error: err
           })
+        } else {
+            res.json({
+              success: true,
+              token: userToken(user)
+            })
+        }
+          
       })
     })
   })

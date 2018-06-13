@@ -10,20 +10,28 @@ import SignUpForm from '../Forms/SignUpForm'
       this.props.actions.signUp(values)
     }
 
+    renderErrors() {
+      if(this.props.error) {
+        // TODO: Imprve error handling from server
+        return <div>{this.props.error.errors.userName.message}</div>
+      }
+    }
+ 
     render() {
       return (
         <div>
           <h1>Sign Up Page</h1>
-
+          {this.renderErrors()}
           <SignUpForm onSubmit={this.onSubmit} />
         </div>
       )
     }
   }
 
-  // const mapStatetToProps = (state) => {
-  //   return { errorMessage: state.user.errorMessage }
-  // }
+  const mapStatetToProps = (state) => {
+    console.log('sTATE', state.user.error)
+    return { error: state.user.error }
+  }
 
   const mapDispatchToProps = (dispatch) => {
     return {
@@ -31,4 +39,4 @@ import SignUpForm from '../Forms/SignUpForm'
     }
   }
 
-export default connect(null, mapDispatchToProps)(SignUp)
+export default connect(mapStatetToProps, mapDispatchToProps)(SignUp)

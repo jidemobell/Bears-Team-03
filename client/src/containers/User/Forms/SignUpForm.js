@@ -11,7 +11,6 @@ import classes from './SignUpForm.css'
         <section>
           <label>{label}</label>
           <div>
-            {console.log('Removed this from input element', ...input)}
             <input type={type} { ...input } />
             {touched && ((error && <span className={classes.Error}>{error}</span>))}
           </div>
