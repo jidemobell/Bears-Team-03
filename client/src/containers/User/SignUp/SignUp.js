@@ -13,7 +13,11 @@ import SignUpForm from '../Forms/SignUpForm'
     renderErrors() {
       if(this.props.error) {
         // TODO: Imprve error handling from server
-        return <div>{this.props.error.errors.userName.message}</div>
+        return (
+          <div>
+            {this.props.error.errors.userName.message}  
+          </div>
+        )
       }
     }
  
@@ -29,7 +33,6 @@ import SignUpForm from '../Forms/SignUpForm'
   }
 
   const mapStatetToProps = (state) => {
-    console.log('sTATE', state.user.error)
     return { error: state.user.error }
   }
 

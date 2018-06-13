@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { Field, reduxForm, Form } from 'redux-form'
-
+ 
 import classes from './SignUpForm.css'
 
   class SignUpForm extends Component {
     render() {
       const { handleSubmit } = this.props
 
+      // TODO: Look at moving this renderField to HOC same for SignInForm
       const renderField = ({ input, label, type, meta: { touched, error } }) => (
         <section>
           <label>{label}</label>

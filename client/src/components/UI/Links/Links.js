@@ -5,7 +5,7 @@ import Link from '../Link/Link';
 
 const Links = (props) => {
   const LinkMap = props.Links.map(link => {
-    return <Link url={link.url} class={link.class} name={link.name} />
+    return <Link key={link.name} url={link.url} class={link.class} name={link.name} />
   })
 
   return (
