@@ -17,7 +17,7 @@ module.exports.createUser= (req, res, next) => {
     userName: req.body.userName,
     email: req.body.email,
     password: req.body.password
-  })
+  }) 
 
   // Hash password using Bcrypt
   bcrypt.genSalt(10, (err, salt) => {
@@ -96,9 +96,19 @@ module.exports.updateUser = (req, res) => {
         error: err
       })
     } else {
-        res.json({
-          success: true,
-          user: user
+        Expense.find({'user': req.user._id}, (err, expenses) => {
+          if(err) {
+            res.json({
+              success: false,
+              error: err
+            })
+          } else {
+              res.json({
+                success: true,
+                user: user,
+                expenses: expenses
+              })
+          }
         })
     }
   })

@@ -60,7 +60,8 @@ export function updateUser({ firstName, lastName, userName, email, password }) {
       if(response.data.success === false) {
         dispatch({ type: USER_ERROR, payload: response.data.error })
       } else {
-        dispatch({ type: USER_DASHBOARD })
+        console.log('updateUser', response.data)
+        dispatch({ type: USER_DASHBOARD, payload: response.data })
         history.push('/dashboard')
       } 
     })
