@@ -71,28 +71,24 @@ module.exports.userDashboard = (req, res) => {
 }
  
 module.exports.updateUser = (req, res) => {
-  let updUser = req.body
+  let updUser = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    userName: req.body.userName,
+    email: req.body.email
+  }
 
-  User.findOne({ '_id': req.user._id }, (err, user) => {
+  User.findByIdAndUpdate(req.user._id, updUser, { new: true }, (err, user) => {
     if(err) {
       res.json({
         success: false,
         error: err
       })
     } else {
-        user = updUser
-        User.updateUser(user, (err, user) => {
-          if(err) {
-            res.json({ 
-              success: false, 
-              error: err 
-            }) 
-          } else { 
-              res.json({ 
-              success: true, 
-              user: user 
-            }) }
+        res.json({
+          success: true,
+          user: user
         })
     }
-})
+  })
 }
