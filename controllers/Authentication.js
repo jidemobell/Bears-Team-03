@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt') // Password hashing tool
 const jwt = require('jwt-simple') // Json web token, for protected routes 
 const User = require('../models/User')
+const Expense = require('../models/Expense')
 
 // Create JWT based on userID
 const userToken = user => {
@@ -62,9 +63,19 @@ module.exports.userDashboard = (req, res) => {
         error: err
       })
     } else {
-        res.json({
-          success: true,
-          user: user
+        Expense.find({'user': req.user._id}, (err, expenses) => {
+          if(err) {
+            res.json({
+              success: false,
+              error: err
+            })
+          } else {
+              res.json({
+                success: true,
+                user: user,
+                expenses: expenses
+              })
+          }
         })
     }
   })

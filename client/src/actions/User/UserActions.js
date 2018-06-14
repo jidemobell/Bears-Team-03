@@ -26,7 +26,7 @@ export function userDashboard() {
   return dispatch => {
     let token = localStorage.getItem('token')
     axios.get(`${ROOT_URL}/dashboard`, { headers: { Authorization: `Bearer ${token}` } }).then(response => {
-      dispatch({ type: USER_DASHBOARD, payload: response.data.user })
+      dispatch({ type: USER_DASHBOARD, payload: response.data })
     })
   }
 }

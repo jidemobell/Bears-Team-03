@@ -6,6 +6,7 @@ const cors = require('cors')
 const passport = require('passport')
 
 const User = require('./routes/User')
+const Expense = require('./routes/Expense')
 
 // Initialize Server, Port and DB Setup
 const Server = express()
@@ -22,6 +23,7 @@ mongoose.connection.on('error', () => {
 Server.use(cors()) // Cross site requests. Basically we can call the API from our react frontend on a different port
 Server.use(bodyParser.json()) // Adds a body to the request so we can send data in json format
 Server.use('/user', User)
+Server.use('/expense', Expense)
 Server.use(passport.initialize()) // Initialize the Passport middleware
 
 // Start Server

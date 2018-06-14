@@ -1,6 +1,10 @@
 import React from 'react'
 
 const Dashboard = (props) => {
+  const expenses = props.expenses.map(expense => {
+    return <li style={{ color: expense.color }}>Name: {expense.name} Amount: £{expense.amount} Frequency: {expense.frequency}</li>
+  })
+
   return (
     <div>
       <h1>Dashboard</h1>
@@ -12,6 +16,13 @@ const Dashboard = (props) => {
 
       <div>
         Charts to Come
+
+        Expenses
+        <div>
+          <ul>
+            {expenses}
+          </ul>
+        </div>
       </div>
     </div>
   )

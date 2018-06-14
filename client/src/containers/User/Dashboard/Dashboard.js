@@ -12,7 +12,7 @@ import DashboardComponent from '../../../components/UI/Dashboard/Dashboard'
 
     render() {
       if(this.props.user && this.props.user.user) {
-        return <DashboardComponent user={this.props.user.user} />
+        return <DashboardComponent user={this.props.user.user} expenses={this.props.user.expenses} />
       } else {
           return <div>No User</div>
       } 
@@ -20,7 +20,10 @@ import DashboardComponent from '../../../components/UI/Dashboard/Dashboard'
   }
 
   const mapStatetToProps = (state) => {
-    return { user: state.user }
+    return { 
+      user: state.user,
+      expenses: state.expenses
+    }
   }
 
   const mapDispatchToProps = (dispatch) => {
