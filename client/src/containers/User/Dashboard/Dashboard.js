@@ -15,8 +15,8 @@ import DashboardComponent from '../../../components/UI/Dashboard/Dashboard'
         return <DashboardComponent user={this.props.user.user} />
       } else {
           return <div>No User</div>
-      }
-    }
+      } 
+    } 
   }
 
   const mapStatetToProps = (state) => {

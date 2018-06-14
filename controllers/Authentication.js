@@ -55,7 +55,7 @@ module.exports.signIn = (req, res) => {
 
 // User Dashboard
 module.exports.userDashboard = (req, res) => {
-  User.findOne({ '_id': req.user._id }, (err, user) => {
+  User.findOne({ '_id': req.user._id }, '-password', (err, user) => {
     if(err) {
       res.json({
         success: false,
@@ -68,4 +68,31 @@ module.exports.userDashboard = (req, res) => {
         })
     }
   })
+}
+ 
+module.exports.updateUser = (req, res) => {
+  let updUser = req.body
+
+  User.findOne({ '_id': req.user._id }, (err, user) => {
+    if(err) {
+      res.json({
+        success: false,
+        error: err
+      })
+    } else {
+        user = updUser
+        User.updateUser(user, (err, user) => {
+          if(err) {
+            res.json({ 
+              success: false, 
+              error: err 
+            }) 
+          } else { 
+              res.json({ 
+              success: true, 
+              user: user 
+            }) }
+        })
+    }
+})
 }

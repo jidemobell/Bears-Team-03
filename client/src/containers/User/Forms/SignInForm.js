@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Field, reduxForm, Form} from 'redux-form'
+import RenderFields from '../../../hoc/RenderFields/RenderFields'
 
 import classes from './SignInForm.css'
 
@@ -7,24 +8,14 @@ class SignInForm extends Component {
   render() {
     const { handleSubmit } = this.props
 
-    const renderField = ({ input, label, type, meta: { touched, error } }) => (
-      <section>
-        <label>{label}</label>
-        <div>
-          <input type={type} { ...input } />
-          {touched && ((error && <span className={classes.Error}>{error}</span>))}
-        </div>
-      </section>
-    )
-
     return (
       <Form onSubmit={handleSubmit} className={classes.Form}>
         <div>
-          <Field type='text' label='Username' name='userName' component={renderField} />
+          <Field type='text' label='Username' name='userName' component={RenderFields} />
         </div>
 
         <div>
-          <Field type='password' label='Password' name='password' component={renderField} />
+          <Field type='password' label='Password' name='password' component={RenderFields} />
         </div>
 
         {this.props.errors}

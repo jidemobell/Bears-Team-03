@@ -10,6 +10,7 @@ import SignUpForm from '../Forms/SignUpForm'
       this.props.actions.signUp(values)
     }
 
+    // TODO: Look at moving this to HOC function smae for signin and update
     renderErrors() {
       if(this.props.error) {
         // TODO: Imprve error handling from server

@@ -14,7 +14,7 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true,
     unique: true
-  },
+  }, 
   email: {
     type: String,
     required: true,
@@ -33,3 +33,9 @@ const User = module.exports = mongoose.model('User', UserSchema)
 module.exports.createUser = (newUser, callback) => {
   newUser.save(callback)
 }
+
+module.exports.updateUser = (updUser, callback) => {
+  updUser.save(callback)
+}
+
+// TODO: Look at moving all DB updating functions here

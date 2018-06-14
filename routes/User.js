@@ -15,9 +15,9 @@ Router.post('/create', Authentication.createUser)
 Router.post('/login', requireSigin, Authentication.signIn)
 
 // Update User
-Router.post('/update', requireSigin)
+Router.post('/update', requireAuth, Authentication.updateUser)
 
 // User Dashboard
 Router.get('/dashboard', requireAuth, Authentication.userDashboard)
 
-module.exports = Router
+module.exports = Router 

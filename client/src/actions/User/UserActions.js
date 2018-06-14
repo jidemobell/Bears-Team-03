@@ -5,8 +5,7 @@ import { SIGN_UP, USER_ERROR, USER_DASHBOARD, SIGN_IN, LOGGED_OUT } from '../typ
  
 const ROOT_URL = 'http://localhost:4000/user'
 
-export function signUp({ firstName, lastName, userName, email, password
-}) {
+export function signUp({ firstName, lastName, userName, email, password }) {
   return dispatch => {
     axios.post(`${ROOT_URL}/create`, { firstName, lastName, userName, email, password
     }).then(response => {
@@ -52,4 +51,18 @@ export function signIn({ userName, password }) {
 export function signOut() {
   localStorage.removeItem('token')
   return ({ type: LOGGED_OUT })
+}
+
+export function updateUser({ firstName, lastName, userName, email, password }) {
+  return dispatch => {
+    let token = localStorage.getItem('token')
+    axios.post(`${ROOT_URL}/update`, { firstName, lastName, userName, email, password }, { headers: { Authorization: `Bearer ${token}` } }).then(response => {
+      if(response.data.success === false) {
+        dispatch({ type: USER_ERROR, payload: response.data.error })
+      } else {
+        dispatch({ type: USER_DASHBOARD })
+        history.push('/dashboard')
+      } 
+    })
+  }
 }
