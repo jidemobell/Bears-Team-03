@@ -80,7 +80,7 @@ module.exports.userDashboard = (req, res) => {
     }
   })
 }
- 
+
 module.exports.updateUser = (req, res) => {
   let updUser = {
     firstName: req.body.firstName,

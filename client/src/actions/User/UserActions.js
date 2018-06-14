@@ -34,8 +34,7 @@ export function userDashboard() {
 export function signIn({ userName, password }) {
   return dispatch => {
     axios.post(`${ROOT_URL}/login`, { userName, password }).then(response => {
-      console.log('Response', response)
-      if(response.data.success === false) {
+      if(response.status === 401) {
         dispatch({ type: USER_ERROR, payload: response.data.error })
       } else {
           dispatch({ type: SIGN_IN })
@@ -43,7 +42,11 @@ export function signIn({ userName, password }) {
           history.push('/dashboard')
       }
     }).catch(error => {
-        dispatch({ type: USER_ERROR, payload: error })
+      if(error.response.status === 401) {
+        let errorMsg = 'Username or Password incorrect'
+        dispatch({ type: USER_ERROR, payload: errorMsg })
+      } 
+      // TODO: Handle else cases
     })
   }
 }

@@ -4,28 +4,18 @@ import { bindActionCreators } from 'redux'
 import * as userActions from '../../../actions/User/UserActions'
 
 import SignInForm from '../Forms/SignInForm'
+import RenderErrors from '../../../hoc/RenderErrors/RenderErrors';
 
   class SignIn extends Component {
     onSubmit = values => {
       this.props.actions.signIn(values)
     }
 
-    renderErrors() {
-      if(this.props.error) {
-        // TODO: Improve error handling from server
-        return (
-          <div>
-            Error
-          </div>
-        )
-      }
-    }
-
     render() {
       return (
         <div>
           <h1>Sign In Page</h1>
-
+          <RenderErrors error={this.props.error} />
           <SignInForm onSubmit={this.onSubmit} />
         </div>)
     }
