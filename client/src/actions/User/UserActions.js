@@ -1,7 +1,7 @@
 import axios from 'axios'
 import history from '../../hoc/History/History'
 
-import { SIGN_UP, USER_ERROR, USER_DASHBOARD, SIGN_IN } from '../types'
+import { SIGN_UP, USER_ERROR, USER_DASHBOARD, SIGN_IN, LOGGED_OUT } from '../types'
  
 const ROOT_URL = 'http://localhost:4000/user'
 
@@ -47,4 +47,9 @@ export function signIn({ userName, password }) {
         dispatch({ type: USER_ERROR, payload: error })
     })
   }
+}
+
+export function signOut() {
+  localStorage.removeItem('token')
+  return ({ type: LOGGED_OUT })
 }

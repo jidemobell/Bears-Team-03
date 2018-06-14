@@ -14,6 +14,9 @@ Router.post('/create', Authentication.createUser)
 // LogIn User
 Router.post('/login', requireSigin, Authentication.signIn)
 
+// Update User
+Router.post('/update', requireSigin)
+
 // User Dashboard
 Router.get('/dashboard', requireAuth, Authentication.userDashboard)
 
