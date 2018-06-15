@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Aux from '../../hoc/Aux/Aux'
+import Aux from '../../hoc/AuxComp/Aux'
 import Navigation from '../../containers/Navigation/Navigation'
 
 const Layout = (props) => {

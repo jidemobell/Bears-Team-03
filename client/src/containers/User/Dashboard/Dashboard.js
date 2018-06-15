@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as userActions from '../../../actions/User/UserActions'
 import Modal from 'react-modal'
-import Aux from '../../../hoc/Aux/Aux'
+import Aux from '../../../hoc/AuxComp/Aux'
 
 import DashboardComponent from '../../../components/UI/Dashboard/Dashboard'
 import AddExpense from '../Expenses/AddExpense';
