@@ -22,9 +22,15 @@ const Dashboard = (props) => {
       <div>
         Charts to Come
 
-        Expenses
+        
         <div>
+          Expenditure
           <PieChart data={props.expenses} colors={colors} />
+        </div>
+
+        <div>
+          Income
+          <PieChart data={props.incomes} colors={colors} />
         </div>
       </div>
     </div>

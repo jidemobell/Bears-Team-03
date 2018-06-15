@@ -65,7 +65,7 @@ const customStyles = {
               
             </Modal>
 
-            <DashboardComponent user={this.props.user.user} expenses={this.props.user.expenses} />
+            <DashboardComponent user={this.props.user.user} expenses={this.props.user.expenses} incomes={this.props.user.incomes} />
           </Aux>
         )
       } else {
@@ -77,7 +77,8 @@ const customStyles = {
   const mapStatetToProps = (state) => {
     return { 
       user: state.user,
-      expenses: state.expenses
+      expenses: state.expenses,
+      incomes: state.incomes
     }
   }
 

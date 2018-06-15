@@ -7,7 +7,7 @@ export default function(state = {}, action) {
     case USER_ERROR:
       return { ...state, error: action.payload }
     case USER_DASHBOARD:
-      return { ...state, user: action.payload.user, expenses: action.payload.expenses }
+      return { ...state, user: action.payload.user, expenses: action.payload.expenses, incomes: action.payload.incomes }
     case SIGN_IN:
       return { ...state, authenticated: true }
     case LOGGED_IN: 
