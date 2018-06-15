@@ -1,8 +1,11 @@
 import React from 'react'
+import PieChart from '../Charts/PieChart';
 
 const Dashboard = (props) => {
+  const colors = []
+
   const expenses = props.expenses.map(expense => {
-    return <li style={{ color: expense.color }}>Name: {expense.name} Amount: £{expense.amount} Frequency: {expense.frequency}</li>
+    colors.push(expense.color)
   })
 
   return (
@@ -19,9 +22,7 @@ const Dashboard = (props) => {
 
         Expenses
         <div>
-          <ul>
-            {expenses}
-          </ul>
+          <PieChart data={props.expenses} colors={colors} />
         </div>
       </div>
     </div>

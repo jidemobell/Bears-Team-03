@@ -45,8 +45,10 @@ export function signIn({ userName, password }) {
       if(error.response.status === 401) {
         let errorMsg = 'Username or Password incorrect'
         dispatch({ type: USER_ERROR, payload: errorMsg })
-      } 
-      // TODO: Handle else cases
+      } else {
+          let errorMsg = 'Something went wrong, Please try again.'
+          dispatch({ type: USER_ERROR, payload: errorMsg })
+      }
     })
   }
 }
