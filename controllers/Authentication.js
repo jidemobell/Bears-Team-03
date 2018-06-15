@@ -32,7 +32,7 @@ module.exports.createUser= (req, res, next) => {
         if(err) {
           res.json({
             success: false,
-            error: err
+            error: err.errors
           })
         } else {
             res.json({

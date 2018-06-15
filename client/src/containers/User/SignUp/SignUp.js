@@ -4,28 +4,27 @@ import { bindActionCreators } from 'redux'
 import * as userActions from '../../../actions/User/UserActions'
 
 import SignUpForm from '../Forms/SignUpForm'
+import RenderErrors from '../../../hoc/RenderErrors/RenderErrors';
 
   class SignUp extends Component {
     onSubmit = values => {
       this.props.actions.signUp(values)
     }
 
-    renderErrors() {
-      if(this.props.error) {
-        // TODO: Imprve error handling from server
-        return (
-          <div>
-            {this.props.error.errors.userName.message}  
-          </div>
-        )
+    validateError = (error) => {
+      if(error.userName && (error.userName.kind === 'unique')) {
+        return 'Username is already in use' 
+      } else if(error.email && (error.email.kind === 'unique')) {
+        return 'Email is already in use'
       }
+      return 'Something went wrong. Please try again.'
     }
  
     render() {
       return (
         <div>
           <h1>Sign Up Page</h1>
-          {this.renderErrors()}
+          <RenderErrors error={this.props.error ? this.validateError(this.props.error) : null} />
           <SignUpForm onSubmit={this.onSubmit} />
         </div>
       )
