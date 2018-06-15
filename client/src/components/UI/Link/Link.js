@@ -3,7 +3,11 @@ import React from 'react'
 import classes from './Link.css'
 
 const Link = (props) => {
-  return <li hidden={props.userLoggedIn} className={classes.Link}><a href={props.url}><i className={props.class}></i> {props.name}</a></li>
+  if(props.public) {
+    return <li className={classes.Link}><a href={props.url}><i className={props.class}></i> {props.name}</a></li>
+  } else {
+      return <li hidden={!props.authenticated ? props.userLoggedIn : !props.userLoggedIn} className={classes.Link}><a href={props.url}><i className={props.class}></i> {props.name}</a></li>
+  }
 }
 
 export default Link
