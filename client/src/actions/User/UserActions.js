@@ -4,6 +4,7 @@ import history from '../../hoc/History/History'
 import { SIGN_UP, USER_ERROR, USER_DASHBOARD, SIGN_IN, LOGGED_OUT } from '../types'
  
 const ROOT_URL = 'http://localhost:4000/user'
+const EXPENSE_URL = 'http://localhost:4000/expense'
 
 export function signUp({ firstName, lastName, userName, email, password }) {
   return dispatch => {
@@ -69,6 +70,18 @@ export function updateUser({ firstName, lastName, userName, email, password }) {
         dispatch({ type: USER_DASHBOARD, payload: response.data })
         history.push('/dashboard')
       } 
+    })
+  }
+}
+
+export function addExpense({ name, amount, frequency, color }) {
+  return dispatch => {
+    let token = localStorage.getItem('token')
+    console.log('AddExpenseAction', name)
+    axios.post(`${EXPENSE_URL}/create`, { name, amount, frequency, color}, { headers: { Authorization: `Bearer ${token}` }} ).then(response => {
+      dispatch({ type: USER_DASHBOARD, payload: response.data })
+    }).catch(error => {
+      dispatch({ type: USER_ERROR, payload: error })
     })
   }
 }

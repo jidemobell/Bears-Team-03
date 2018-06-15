@@ -27,11 +27,11 @@ import classes from './SignUpForm.css'
           </div>
 
           <div>
-            <Field type='text' label='Password' name='password' component={RenderFields} />
+            <Field type='password' label='Password' name='password' component={RenderFields} />
           </div>
 
           <div>
-            <Field type='text' label='Confirm Password' name='confirmPassword' component={RenderFields} />
+            <Field type='password' label='Confirm Password' name='confirmPassword' component={RenderFields} />
           </div>
 
           {this.props.errors}
