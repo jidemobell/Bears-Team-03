@@ -1,6 +1,5 @@
 import React from 'react'
 import PieChart from '../Charts/PieChart';
-import Modal from 'react-modal'
 
 const Dashboard = (props) => {
   const colors = []

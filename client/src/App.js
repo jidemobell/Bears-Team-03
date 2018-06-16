@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import Aux from './hoc/AuxComp/Aux'
+import AuxComp from './hoc/AuxComp/AuxComp'
 import Auth from './hoc/Auth/Auth'
 import Layout from './components/Layout/Layout'
 import Home from './components/Home/Home';
@@ -15,7 +15,7 @@ import UpdateUser from './containers/User/Update/UpdateUser'
 class App extends Component {
   render() {
     return (
-      <Aux>
+      <AuxComp>
         <Layout />
 
         <Switch>
@@ -27,7 +27,7 @@ class App extends Component {
           <Route path='/dashboard' exact component={Auth(Dashboard)} />
           <Route path='/edit' exact component={Auth(UpdateUser)} />
         </Switch>
-      </Aux>
+      </AuxComp>
     );
   }
 }

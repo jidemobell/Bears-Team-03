@@ -1,13 +1,13 @@
 import React from 'react'
 
-import Aux from '../../hoc/AuxComp/Aux'
+import AuxComp from '../../hoc/AuxComp/AuxComp'
 import Navigation from '../../containers/Navigation/Navigation'
 
 const Layout = (props) => {
   return (
-    <Aux>
+    <AuxComp>
       <Navigation />
-    </Aux>
+    </AuxComp>
   )
 }
 

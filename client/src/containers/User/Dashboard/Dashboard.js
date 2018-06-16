@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as userActions from '../../../actions/User/UserActions'
 import Modal from 'react-modal'
-import Aux from '../../../hoc/AuxComp/Aux'
+import AuxComp from '../../../hoc/AuxComp/AuxComp'
 
 import DashboardComponent from '../../../components/UI/Dashboard/Dashboard'
 import AddExpense from '../Expenses/AddExpense';
@@ -50,7 +50,7 @@ const customStyles = {
     render() {
       if(this.props.user && this.props.user.user) {
         return (
-          <Aux>
+          <AuxComp>
             <button onClick={this.openModal}>Add Expense</button>
             <Modal
               isOpen={this.state.modalOpen}
@@ -66,7 +66,7 @@ const customStyles = {
             </Modal>
 
             <DashboardComponent user={this.props.user.user} expenses={this.props.user.expenses} incomes={this.props.user.incomes} />
-          </Aux>
+          </AuxComp>
         )
       } else {
           return <div>No User</div>
