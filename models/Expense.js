@@ -1,14 +1,7 @@
 const mongoose = require('mongoose')
+const timestamps = require('mongoose-timestamp');
 
-const ExpenseSchema = new mongoose.Schema({
-  // name: String,
-  // amount: Number,
-  // frequency: String,
-  // color: String,
-  timestamps: {            
-    createdAt: 'date',
-    updatedAt: 'last_edited'
-   },
+const ExpenseSchema = new  mongoose.Schema({
   item: {
     type: String,
     required: true,
@@ -26,19 +19,15 @@ const ExpenseSchema = new mongoose.Schema({
   }, 
   color: String,
   category : [{
-    decription : String,  //etc food,grocery,transport
+    description : String,  //etc food,grocery,transport
     amount : String 
      }],
   user: { type: mongoose.Schema.ObjectId, ref: "User" }
 })
 
 
-ExpenseSchema.statics.findByUser = function(){
+ExpenseSchema.plugin(timestamps);
+const Expense = mongoose.model('Expense', ExpenseSchema)
 
-}
 
-const Expense = module.exports = mongoose.model('Expense', ExpenseSchema)
-
-module.exports.createExpense = (expense, callback) => {
-  expense.save(callback)
-}
+module.exports = {Expense}

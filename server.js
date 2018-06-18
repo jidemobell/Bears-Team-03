@@ -11,9 +11,11 @@ const Expense = require('./routes/Expense')
 const Income = require('./routes/Income')
 
 // Initialize Server, Port and DB Setup
+
 const Server = express()
 const Port = process.env.port || 4000
 mongoose.connect(process.env.DB_HOST)
+mongoose.PromiseProvider = global.Promise;
 mongoose.connection.on('connected', () => {
   console.log(`Connected to DB: ${process.env.DB_HOST}`)
 })
