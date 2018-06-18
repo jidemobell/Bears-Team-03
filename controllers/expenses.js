@@ -4,7 +4,6 @@ const {Expense} = require('../models/Expense');
 
 module.exports = {
      createExpense(body){
-       console.log('ALLEXPENSE',body)
        return new Expense(
         {
           item: `${body.item}`,

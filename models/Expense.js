@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const timestamps = require('mongoose-timestamp');
+//const timestamps = require('mongoose-timestamp');
 
 const ExpenseSchema = new  mongoose.Schema({
   item: {
@@ -23,10 +23,12 @@ const ExpenseSchema = new  mongoose.Schema({
     amount : String 
      }],
   user: { type: mongoose.Schema.ObjectId, ref: "User" }
-})
+},
+ {timestamps: { createdAt: 'date' }}
+)
 
 
-ExpenseSchema.plugin(timestamps);
+//ExpenseSchema.plugin(timestamps);
 const Expense = mongoose.model('Expense', ExpenseSchema)
 
 

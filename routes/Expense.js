@@ -6,7 +6,7 @@ const requireSignin = passport.authenticate('local', { session: false })
 const requireAuth = passport.authenticate('jwt', { session: false })
 
 // Add an expense
-Router.post('/create', requireAuth , (req, res) => {
+Router.post('/create', (req, res) => {
 const expense = {
      item: req.body.item,
      paidWith: req.body.paidWith,
