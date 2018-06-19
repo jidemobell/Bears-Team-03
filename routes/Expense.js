@@ -12,12 +12,13 @@ const  _ = require('lodash')
 Router.post('/create', requireAuth, (req, res) => {
 const expense = {
      date: req.body.date,
-     item: req.body.item,
+     name: req.body.name,
      paidWith: req.body.paidWith,
      frequency: req.body.frequency,
      color: req.body.color,
-     description: req.body.description,
+    // description: req.body.description,
      amount: req.body.amount,
+     amcategory: req.body.category,
      user: req.user._id
 
 }

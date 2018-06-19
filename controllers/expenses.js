@@ -7,12 +7,17 @@ module.exports = {
        return new Expense(
         { 
           date: `${body.date}`,
-          item: `${body.item}`,
+          name: `${body.name}`,
           paidWith: `${body.paidWith}`,
-          category: [{
-            description: `${body.description}`,
-            amount: `${body.amount}`
-          }]
+          color: `${body.color}`,
+          frequency: `${body.frequency}`,
+          // category: [{
+          //   description: `${body.description}`,
+          //   amount: `${body.amount}`
+          // }],
+          amount: `${body.amount}`,
+          category: `${body.category}`,
+          user:`${body.user}`
         }
        ).save()
          .then(response => response)

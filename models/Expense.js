@@ -17,14 +17,20 @@ const ExpenseSchema = new  mongoose.Schema({
     minlength: 1,
     trim: true
   },
-  frequecy: {
+  amount: {
+    type: Number
+  },
+  category: {
+    type: String
+  },
+  frequency: {
     type: String
   }, 
   color: String,
-  category : [{
-    description : String,  //etc food,grocery,transport
-    amount : String 
-     }],
+  // category : [{
+  //   description : String,  //etc food,grocery,transport
+  //   amount : String 
+  //    }],
   user: { type: mongoose.Schema.ObjectId, ref: "User" }
 },
  {timestamps: { createdAt: 'date' }}
