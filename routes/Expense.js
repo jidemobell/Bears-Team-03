@@ -8,7 +8,7 @@ const requireSignin = passport.authenticate('local', { session: false })
 const requireAuth = passport.authenticate('jwt', { session: false })
 const  _ = require('lodash')
 
-// Add an expense
+//Add an expense
 Router.post('/create', requireAuth, (req, res) => {
 const expense = {
      date: req.body.date,
@@ -16,9 +16,9 @@ const expense = {
      paidWith: req.body.paidWith,
      frequency: req.body.frequency,
      color: req.body.color,
-     //user: req.user._id,
      description: req.body.description,
-     amount: req.body.amount
+     amount: req.body.amount,
+     user: req.user._id
 
 }
    
@@ -36,9 +36,12 @@ const expense = {
     })
 })
 
+
+
+//get all user expenses by date
 Router.post('/list/date', getExpenseByDate)
 
-
+//get all user expenses
 Router.get('/list', getAllExpenses)
 
 module.exports = Router

@@ -74,11 +74,13 @@ export function updateUser({ firstName, lastName, userName, email, password }) {
   }
 }
 
-export function addExpense({ name, amount, frequency, color }) {
+
+
+export function addExpense({ date, name, paidWith, amount, frequency, color , description }) {
   return dispatch => {
     let token = localStorage.getItem('token')
     console.log('AddExpenseAction', name)
-    axios.post(`${EXPENSE_URL}/create`, { name, amount, frequency, color}, { headers: { Authorization: `Bearer ${token}` }} ).then(response => {
+    axios.post(`${EXPENSE_URL}/create`, {date, name, paidWith, amount, frequency, color , description, amount}, { headers: { Authorization: `Bearer ${token}` }} ).then(response => {
       dispatch({ type: USER_DASHBOARD, payload: response.data })
     }).catch(error => {
       dispatch({ type: USER_ERROR, payload: error })

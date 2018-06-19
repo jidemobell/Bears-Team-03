@@ -5,7 +5,7 @@ const ExpenseSchema = new  mongoose.Schema({
   date: {
     type: DateOnly
   },
-  item: {
+  name: {
     type: String,
     required: true,
     minlength: 1,
@@ -18,7 +18,7 @@ const ExpenseSchema = new  mongoose.Schema({
     trim: true
   },
   frequecy: {
-
+    type: String
   }, 
   color: String,
   category : [{
@@ -35,3 +35,4 @@ const Expense = mongoose.model('Expense', ExpenseSchema)
 
 
 module.exports = Expense
+
