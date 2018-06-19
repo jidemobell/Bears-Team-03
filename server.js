@@ -20,7 +20,7 @@ mongoose.connection.on('connected', () => {
   console.log(`Connected to DB: ${process.env.DB_HOST}`)
 })
 mongoose.connection.on('error', () => {
-  console.log('Failed to connect to DB')
+  console.log('Failed to connect to DB') 
 })
 
 // Middleware

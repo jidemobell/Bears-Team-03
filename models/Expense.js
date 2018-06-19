@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
-//const timestamps = require('mongoose-timestamp');
+var DateOnly = require('mongoose-dateonly')(mongoose);
 
 const ExpenseSchema = new  mongoose.Schema({
+  date: {
+    type: DateOnly
+  },
   item: {
     type: String,
     required: true,
@@ -28,8 +31,7 @@ const ExpenseSchema = new  mongoose.Schema({
 )
 
 
-//ExpenseSchema.plugin(timestamps);
 const Expense = mongoose.model('Expense', ExpenseSchema)
 
 
-module.exports = {Expense}
+module.exports = Expense
