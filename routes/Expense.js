@@ -39,10 +39,5 @@ const expense = {
 
 
 
-//get all user expenses by date
-Router.post('/list/date', getExpenseByDate)
-
-//get all user expenses
-Router.get('/list', getAllExpenses)
 
 module.exports = Router
