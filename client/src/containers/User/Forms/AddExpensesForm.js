@@ -11,11 +11,18 @@ import classes from './AddExpensesForm.css'
       return (
         <Form onSubmit={handleSubmit} className={classes.Form}>
           <div> 
+            <Field type='text' label='Date' name='date' component={RenderFields} />
+          </div>
+          <div> 
             <Field type='text' label='Name' name='name' component={RenderFields} />
           </div>
 
+          <div> 
+            <Field type='text' label='Paid With' name='paidWith' component={RenderFields} />
+          </div>
+
           <div>
-            <Field type='numnber' label='Amount' name='amount' component={RenderFields} />
+            <Field type='number' label='Amount' name='amount' component={RenderFields} />
           </div>
 
           <div>
@@ -24,6 +31,10 @@ import classes from './AddExpensesForm.css'
 
           <div>
             <Field type='text' label='Color' name='color' component={RenderFields} />
+          </div>
+
+          <div> 
+            <Field type='text' label='Category' name='category' component={RenderFields} />
           </div>
 
           {this.props.errors}

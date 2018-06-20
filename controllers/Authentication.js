@@ -23,7 +23,9 @@ module.exports.createUser= (req, res, next) => {
   // Hash password using Bcrypt
   bcrypt.genSalt(10, (err, salt) => {
     if(err) { return next(err) }
-
+    console.log('SALT', salt)
+    console.log('RAWPASS', newUser)
+    
     bcrypt.hash(newUser.password, salt, (err, hash) => {
       if(err) { return next(err) }
 
