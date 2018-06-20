@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Field, reduxForm, Form } from 'redux-form'
 import RenderFields from '../../../hoc/RenderFields/RenderFields' 
 
-import classes from './SignUpForm.css'
+import classes from './AddExpensesForm.css'
 
   class AddExpensesForm extends Component {    
     render() {

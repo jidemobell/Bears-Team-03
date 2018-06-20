@@ -3,9 +3,17 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as userActions from '../../../actions/User/UserActions'
 
-import SignUpForm from '../Forms/SignUpForm'
 import RenderErrors from '../../../hoc/RenderErrors/RenderErrors';
+import Form from '../../../components/UI/Form/Form';
 
+const formFields = [
+  { label: 'First Name', name: 'firstName', type: 'text', errorMsg: 'First Name is required' },
+  { label: 'Last Name', name: 'lastName', type: 'text', errorMsg: 'Last Name is required' },
+  { label: 'User Name', name: 'userName', type: 'text', errorMsg: 'User Name is required' },
+  { label: 'Email', name: 'email', type: 'email', errorMsg: 'Email is required' },
+  { label: 'Password', name: 'password', type: 'password', errorMsg: 'Password is required' },
+  { label: 'Confirm Password', name: 'confirmPassword', type: 'password', errorMsg: 'Passwords do not match' }
+]
   class SignUp extends Component {
     onSubmit = values => {
       this.props.actions.signUp(values)
@@ -25,7 +33,8 @@ import RenderErrors from '../../../hoc/RenderErrors/RenderErrors';
         <div>
           <h1>Sign Up Page</h1>
           <RenderErrors error={this.props.error ? this.validateError(this.props.error) : null} />
-          <SignUpForm onSubmit={this.onSubmit} />
+          {/* <SignUpForm onSubmit={this.onSubmit} /> */}
+          <Form fields={formFields} onSubmit={this.onSubmit} button='Sign Up' title='Sign Up Form'/>
         </div>
       )
     }
