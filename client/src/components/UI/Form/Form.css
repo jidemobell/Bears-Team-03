@@ -64,6 +64,20 @@
   border-color: #ff2d26;
 }
 
+button {
+  background: white;
+  padding: 10px;
+  color: black;
+  border: none;
+  transition: all .2s ease-in-out;
+  border: solid 1px transparent;
+}
+
+button:hover {
+  border-color: white;
+  background: #428bca;
+}
+
 /* 
   TODO: Posible sitewide fonts
 
