@@ -13,13 +13,14 @@ const Dashboard = (props) => {
     <div>
       <h1>Dashboard</h1>
       <button><a href="/edit">Update Details</a></button>
+      <button onClick={props.onClick}>Add Expense</button>
 
       <h1>Name: {props.user.firstName} {props.user.lastName}</h1>
       <h1>Username: {props.user.userName}</h1>
       <h1>Email: {props.user.email}</h1>
 
       <div>
-        Charts to Come
+        Charts
 
         
         <div>

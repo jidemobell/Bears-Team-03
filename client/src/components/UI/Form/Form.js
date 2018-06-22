@@ -18,8 +18,13 @@ const FormBuilder = props => {
   const { handleSubmit } = props
     const formField = props.fields.map(field => {
       errorFields.push(field)
-      return <Field label={field.label} name={field.name} type={field.type} component={RenderFields} />
+      return <Field key={field.name} label={field.label} name={field.name} type={field.type} component={RenderFields} />
     })
+
+    let modalClose = null
+    if(props.onClickClose) {
+      modalClose = <button type='button' onClick={props.onClickClose}>Close</button> 
+    }
 
     return (
       <div className={classes.Container}>
@@ -29,6 +34,7 @@ const FormBuilder = props => {
           {formField}
 
           <button type='submit'>{props.button}</button>
+          {modalClose}
           {props.errors}
         </Form>
       </div>

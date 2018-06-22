@@ -8,6 +8,8 @@ import AuxComp from '../../../hoc/AuxComp/AuxComp'
 import DashboardComponent from '../../../components/UI/Dashboard/Dashboard'
 import AddExpense from '../Expenses/AddExpense';
 
+import classes from './Dashboard.css'
+
 const customStyles = {
   content : {
     top                   : '50%',
@@ -15,7 +17,7 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)',
+    transform             : 'translate(-50%, -50%)'
   }
 };
 
@@ -51,21 +53,19 @@ const customStyles = {
       if(this.props.user && this.props.user.user) {
         return (
           <AuxComp>
-            <button onClick={this.openModal}>Add Expense</button>
             <Modal
               isOpen={this.state.modalOpen}
               onAfterOpen={this.afterOpenModal}
               onRequestClose={this.closeModal}
               style={{customStyles}}
-              contentLabel="Example Modal"
+              contentLabel="Modal"
             >
-              Add Expense
 
-              <AddExpense onClick={this.closeModal} />
+              <AddExpense onClick={this.closeModal} onClickClose={this.closeModal} />
               
             </Modal>
 
-            <DashboardComponent user={this.props.user.user} expenses={this.props.user.expenses} incomes={this.props.user.incomes} />
+            <DashboardComponent user={this.props.user.user} expenses={this.props.user.expenses} incomes={this.props.user.incomes} onClick={this.openModal} />
           </AuxComp>
         )
       } else {

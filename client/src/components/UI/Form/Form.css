@@ -71,6 +71,8 @@ button {
   border: none;
   transition: all .2s ease-in-out;
   border: solid 1px transparent;
+  margin: 0 2px;
+  border-radius: 50px;
 }
 
 button:hover {
@@ -78,6 +80,10 @@ button:hover {
   background: #428bca;
 }
 
+button a {
+  text-decoration: none;
+  color: black;
+}
 /* 
   TODO: Posible sitewide fonts
 
