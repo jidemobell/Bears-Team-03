@@ -1,10 +1,9 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Layout,Card ,Form, Button, Input, Menu, Icon } from 'antd';
+import { Layout,Card ,Form, Button, Input } from 'antd';
 import LinkHeader from '../../container/Header/LinkHeader';
-const {Header,Content} = Layout
+const {Content} = Layout;
 const FormItem = Form.Item;
-const SubMenu = Menu.SubMenu;
 
 
 class Expense extends React.Component {

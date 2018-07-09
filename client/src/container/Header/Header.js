@@ -74,6 +74,7 @@ class DefaultHeader extends React.Component{
             >
               <Menu.Item key="3"><Link to={`/expense`}>Add Expense</Link></Menu.Item>
               <Menu.Item key="4">Monthly Budget Overview</Menu.Item>
+              <Menu.Item key="5">Budget Allocator</Menu.Item>
             </SubMenu>
             {/* <Menu.Item key="2" style={{ float: 'right' }}><Icon type="poweroff" />Logout</Menu.Item> */}
             <SubMenu key="4" style={{ float: 'right' }} title={<span><Icon type="poweroff" /><span>Logout</span></span>}></SubMenu>
