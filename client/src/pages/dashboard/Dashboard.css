@@ -13,3 +13,11 @@
   
   float: right;
 }
+
+.progressbar-progress{
+  margin-bottom: 5px;
+}
+
+#progress-red{
+  margin-left: 0px;
+}

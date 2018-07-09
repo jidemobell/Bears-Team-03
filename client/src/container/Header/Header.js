@@ -1,10 +1,15 @@
 import React  from 'react';
 import { Link } from 'react-router-dom'
-import { Layout, Menu, Icon} from 'antd';
 import 'antd/dist/antd.css';
+import { Layout, Menu, Icon, DatePicker} from 'antd';
 import ExpenseModal from '../Expense/ExpenseModal';
+import moment from 'moment';
+
 const { Header } = Layout;
 const SubMenu = Menu.SubMenu;
+const { Content, Footer } = Layout;
+const dateFormat = 'YYYY/MM/DD';
+
 
 
 class DefaultHeader extends React.Component{
@@ -75,11 +80,17 @@ class DefaultHeader extends React.Component{
               <Menu.Item key="3"><Link to={`/expense`}>Add Expense</Link></Menu.Item>
               <Menu.Item key="4">Monthly Budget Overview</Menu.Item>
               <Menu.Item key="5">Budget Allocator</Menu.Item>
+              <Menu.Item key="6">Earnings</Menu.Item>
             </SubMenu>
             {/* <Menu.Item key="2" style={{ float: 'right' }}><Icon type="poweroff" />Logout</Menu.Item> */}
             <SubMenu key="4" style={{ float: 'right' }} title={<span><Icon type="poweroff" /><span>Logout</span></span>}></SubMenu>
             <SubMenu key="5" style={{ float: 'right' }} title={<span><ExpenseModal /></span>}></SubMenu>
-            
+            <SubMenu key="6"  title={<span><span>Timeline</span></span>}></SubMenu>
+            <SubMenu key="7" 
+            style={{ float: 'right' }} 
+            title={<span>
+              <DatePicker defaultValue={moment('2015/01/01', dateFormat)} format={dateFormat} /></span>}>
+            </SubMenu>
             </Menu>
 
           </Header>
