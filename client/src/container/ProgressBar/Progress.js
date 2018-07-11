@@ -10,13 +10,11 @@ class ProgressLine extends React.Component{
     return (
       <div>
         <Row>
-          <Col span={6}>
+          <Col span={3}>
         <span className="progress-font" >{this.props.name}</span>
         <Divider type="vertical" />
-        
           </Col>
-          
-          <Col span={18}>
+          <Col span={21}>
         <Progress completed={this.props.value} style={{ marginTop: '6px' }} className="container" color={this.props.color} />
         </Col>
         </Row>

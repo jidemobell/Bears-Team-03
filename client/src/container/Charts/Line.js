@@ -1,6 +1,7 @@
 import React from 'react';
-import {Line, LineChart,XAxis,YAxis,CartesianGrid} from 'recharts';
-
+import {LineChart, Line, XAxis, YAxis, 
+  CartesianGrid, Tooltip, Legend} from 'recharts';
+import './Line.css'
 
 
 const data = [
@@ -57,10 +58,14 @@ const data = [
 class LineGraph extends React.Component{
   render(){
     return (
-      <LineChart width={500} height={300} data={data}>
+      <LineChart width={500} height={300} data={data}
+      margin={{top: 5, right: 30, left: 20, bottom: 5}}
+      >
       <XAxis dataKey="name"/>
       <YAxis/>
       <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
+      <Tooltip/>
+      <Legend />
       <Line type="monotone" dataKey="BMI" stroke="#8884d8" />
       <Line type="monotone" dataKey="amount" stroke="#82ca9d" />
     </LineChart>
