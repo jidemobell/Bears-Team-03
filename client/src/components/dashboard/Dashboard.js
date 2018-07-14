@@ -1,13 +1,17 @@
 import React  from 'react';
+//import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as userActions from '../../actions/User/UserActions'
 import './Dashboard.css';
 import 'antd/dist/antd.css';
 import { Layout,Breadcrumb, Divider, Row, Col,Card  } from 'antd';
-import DefaultHeader from '../../container/Header/Header';
+import DefaultHeader from '../../container/Header/BoardHeader';
 import LineGraph from './../../container/Charts/Line';
 import BarGraph from '../../container/Charts/Bar';
 import GraphDisplay from './../../container/Graph/GraphDisplay';
 import ProgessLine from '../../container/ProgressBar/Progress';
 import TimeLiner from '../../container/Timeline/TimeLiner';
+import AuxComp from './../../hoc/AuxComp/AuxComp';
 
 const { Content, Footer } = Layout;
 
@@ -36,6 +40,7 @@ class Dashboard extends React.Component {
    })
  }
 
+ //defaultheader and graphdisplay is smart
 
   render(){
     return (
@@ -85,3 +90,18 @@ class Dashboard extends React.Component {
 }
 
 export default Dashboard
+
+// const mapStatetToProps = (state) => {
+//   return { 
+//     menu: state.menu,
+//     getMenu: state.getMenu
+//   }
+// }
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     actions: bindActionCreators(Object.assign(userActions), dispatch)
+//   }
+// }
+
+// export default connect(mapStatetToProps, mapDispatchToProps)(Dashboard)

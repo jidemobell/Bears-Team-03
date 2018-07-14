@@ -5,6 +5,7 @@
   "dependencies": {
     "ajv": "6.0.0",
     "antd": "^3.6.5",
+    "axios": "^0.18.0",
     "immutable": "3.7.4",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
@@ -12,7 +13,10 @@
     "react-progressbar": "^15.4.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "recharts": "^1.0.1"
+    "recharts": "^1.0.1",
+    "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
+    "redux-thunk": "^2.3.0"
   },
   "proxy": "http://localhost:4000/",
   "scripts": {

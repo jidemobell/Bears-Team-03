@@ -1,9 +1,12 @@
 import React from 'react';
-
-import { Form, Input, Tooltip, Icon, 
- Button, Layout, Card } from 'antd';
 import 'antd/dist/antd.css';
 import './Register.css';
+//import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+//import * as userActions from '../../actions/User/UserActions'
+import { Form, Input, Tooltip, Icon, 
+ Button, Layout, Card } from 'antd';
+
 const {Header, Content} = Layout
 const FormItem = Form.Item;
 // const Option = Select.Option;
@@ -22,6 +25,7 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        this.props.actions.Register(values)
       }
     });
   }
@@ -176,6 +180,18 @@ class RegistrationForm extends React.Component {
   }
 }
 
-const Registration = Form.create()(RegistrationForm);
+const Register = Form.create()(RegistrationForm);
 
-export default Registration
+export default Register
+
+// const mapStatetToProps = (state) => {
+//   return { error: state.user.error }
+// }
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     actions: bindActionCreators(Object.assign(userActions), dispatch)
+//   }
+// }
+
+// export default connect(mapStatetToProps, mapDispatchToProps)(Register)

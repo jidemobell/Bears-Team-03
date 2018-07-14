@@ -90,8 +90,8 @@ class DefaultHeader extends React.Component{
               <Menu.Item key="11">Budget Allocator</Menu.Item>
               <Menu.Item key="12">Earnings</Menu.Item>
             </SubMenu>
-            {/* <Menu.Item key="2" style={{ float: 'right' }}><Icon type="poweroff" />Logout</Menu.Item> */}
-            <SubMenu key="4" style={{ float: 'right' }} title={<span><Icon type="poweroff" /><span>Logout</span></span>}></SubMenu>
+            <Menu.Item key="13" style={{ float: 'right' }}><Link to={`/`}><Icon type="poweroff" />Logout</Link></Menu.Item>
+            {/* <SubMenu key="4" style={{ float: 'right' }} title={<span><Icon type="poweroff" /><span>Logout</span></span>}></SubMenu> */}
             <SubMenu key="5" style={{ float: 'right' }} title={<span><Icon type="user" /><span>Username</span></span>}></SubMenu>
             <SubMenu key="6"  title={<span><span>Timeline</span></span>}></SubMenu>
             <SubMenu key="7" 
