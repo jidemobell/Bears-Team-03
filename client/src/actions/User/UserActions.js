@@ -2,16 +2,16 @@ import axios from 'axios';
 import * as actionType from '../actionTypes'
 import * as URL from '../../urls/URL'
 
-// const user={
-//   firstName,
-//   lastName,
-//   userName,
-//   email,
-//   password
-// }
+
 export function Register(user){
     return dispatch => {
-      axios.post(`${URL.USER_URL}/create`, user)
+      axios.post(`${URL.USER_URL}/create`, {
+        // firstName,
+        // lastName,
+        // userName,
+        // email,
+        // password
+      })
       .then(response => {
         if(response.data.success === false){
           dispatch({
@@ -20,7 +20,7 @@ export function Register(user){
           })
         }else{
           dispatch({
-            type: actionType.SIGN_UP
+            type: actionType.REGISTER
           })
           localStorage.setItem('token', response.data.token)
           //history.pushState('/dasboard')
@@ -44,20 +44,20 @@ export function userDashboard(){
       }
     }).then(response => {
       dispatch({
-        type: actionType.USER_DASHBOARD,
+       // type: actionType.USER_DASHBOARD,
         payload: response.data
       })
     })
   }
 }
 
-// const loginDetails ={
-//   userName,
-//   password
-// }
-export function Home(loginDetails){
+
+export function Login(loginDetails){
   return dispatch => {
-    axios.post(`${URL.USER_URL}/login`, loginDetails )
+    axios.post(`${URL.USER_URL}/login`, {
+      // userName,
+      // password
+    } )
     .then(response => {
       if(response.status === 401){
         dispatch({
@@ -66,7 +66,7 @@ export function Home(loginDetails){
         })
       }else{
         dispatch({
-          type: actionType.SIGN_IN,
+          type: actionType.LOGIN,
         })
         localStorage.setItem('token', response.data.token)
        // history.push('/dashoard')
@@ -83,7 +83,7 @@ export function Home(loginDetails){
   }
 }
 
-export function signOut(){
+export function LogOut(){
   localStorage.removeItem('token')
   return({
     type: actionType.LOGGED_OUT
@@ -103,7 +103,7 @@ export function updateUser(user){
       }else{
         console.log('update user', response.data)
         dispatch({
-          type: actionType.USER_DASHBOARD,
+        //  type: actionType.USER_DASHBOARD,
           payload: response.data
         })
       //  history.push('/dashboard')

@@ -3,7 +3,7 @@ import ExpenseModalForm from './ExpenseModelForm';
 
 
 
-class ExpenseModal extends React.Component {
+class ExpenseModalButton extends React.Component {
   state = {
     visible: false,
   };
@@ -48,4 +48,4 @@ class ExpenseModal extends React.Component {
   }
 }
 
-export default ExpenseModal
+export default ExpenseModalButton

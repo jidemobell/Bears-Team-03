@@ -1,15 +1,11 @@
 import React from 'react';
-import LineGraph from './../Charts/Line';
-import BarGraph from './../Charts/Bar';
-import PieGraph from './../Charts/Pie';
+import LineGraph from './../../container/Charts/Line';
+import PieGraph from './../../container/Charts/Pie';
+import BarGraph from './../../container/Charts/Bar';
+
 class GraphDisplay extends React.Component{
  
   getChart(data){
-      // if(data === 'pie'){
-      //   return < LineGraph />
-      // }else if (data === 'bar'){
-      //   return < BarGraph />
-      // }
       switch (data) {
         case 'line':
           return < LineGraph />
@@ -17,10 +13,6 @@ class GraphDisplay extends React.Component{
           return < PieGraph />
           case 'bar':
           return < BarGraph />
-
-          // case 'area':
-          // return < AreaGraph />
-          // break;
           default:
           return < LineGraph />
       }

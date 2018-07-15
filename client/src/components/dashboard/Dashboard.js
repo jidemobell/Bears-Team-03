@@ -1,17 +1,15 @@
 import React  from 'react';
 //import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as userActions from '../../actions/User/UserActions'
+import * as userActions from '../../actions/User/UserActions';
 import './Dashboard.css';
 import 'antd/dist/antd.css';
 import { Layout,Breadcrumb, Divider, Row, Col,Card  } from 'antd';
-import DefaultHeader from '../../container/Header/BoardHeader';
-import LineGraph from './../../container/Charts/Line';
-import BarGraph from '../../container/Charts/Bar';
-import GraphDisplay from './../../container/Graph/GraphDisplay';
 import ProgessLine from '../../container/ProgressBar/Progress';
 import TimeLiner from '../../container/Timeline/TimeLiner';
 import AuxComp from './../../hoc/AuxComp/AuxComp';
+import UserBoardHeader from './../../container/Header/BoardHeader';
+import GraphDisplay from './../Graph/GraphDisplay';
 
 const { Content, Footer } = Layout;
 
@@ -21,12 +19,12 @@ class Dashboard extends React.Component {
     super(props) 
     this.state = {
        menu: 'pie',
-      barThreeValue: {
-        name:'CASH',
+      barOneValue: {
+        name:'CASH',   //hardcoded entries for test
         value: 80,
         color: '#1890FF'
       },
-      barFourValue: {
+      barTwoValue: {
         name:'CARD',              
         value: 59,
         color: '#001529'
@@ -40,18 +38,13 @@ class Dashboard extends React.Component {
    })
  }
 
- //defaultheader and graphdisplay is smart
 
   render(){
     return (
-        <Layout>
-          <DefaultHeader getMenu = {(val) => this.getMenu(val)} />
+         <div>
+          <UserBoardHeader getMenu = {(val) => this.getMenu(val)} />
+          <Layout>
           <Content style={{ padding: '0 50px', marginTop: 64 }}>
-            {/* <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb> */}
             <br />
             <br />
             <div style={{ background: '#fff', padding: 24, minHeight: 380, overflow:'hidden' }}>
@@ -65,13 +58,13 @@ class Dashboard extends React.Component {
                </Divider>  
                 <Card style={{ padding: '3px' }}>
                 <ProgessLine 
-                value={this.state.barThreeValue.value} 
-                color={this.state.barThreeValue.color}
-                name ={this.state.barThreeValue.name}/>
+                value={this.state.barOneValue.value} 
+                color={this.state.barOneValue.color}
+                name ={this.state.barOneValue.name}/>
                 <ProgessLine 
-                value={this.state.barFourValue.value} 
-                color={this.state.barFourValue.color}
-                name ={this.state.barFourValue.name}/>
+                value={this.state.barTwoValue.value} 
+                color={this.state.barTwoValue.color}
+                name ={this.state.barTwoValue.name}/>
                 </Card>
                 <Card>
                   <TimeLiner />
@@ -85,23 +78,10 @@ class Dashboard extends React.Component {
             ChinguVoyage Bears3 Design ©2016 Created with by Ant UED
           </Footer>
         </Layout>
+        </div>
     )
   }
 }
 
 export default Dashboard
 
-// const mapStatetToProps = (state) => {
-//   return { 
-//     menu: state.menu,
-//     getMenu: state.getMenu
-//   }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     actions: bindActionCreators(Object.assign(userActions), dispatch)
-//   }
-// }
-
-// export default connect(mapStatetToProps, mapDispatchToProps)(Dashboard)

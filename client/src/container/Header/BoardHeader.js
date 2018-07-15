@@ -2,7 +2,7 @@ import React  from 'react';
 import { Link } from 'react-router-dom'
 import 'antd/dist/antd.css';
 import { Layout, Menu, Icon, DatePicker} from 'antd';
-import ExpenseModal from '../Expense/ExpenseModal';
+import ExpenseModalButton from '../Expense/ExpenseModal';
 import moment from 'moment';
 
 const { Header } = Layout;
@@ -12,7 +12,7 @@ const dateFormat = 'YYYY/MM/DD';
 
 
 
-class DefaultHeader extends React.Component{
+class UserBoardHeader extends React.Component{
   constructor(props){
     super(props);
     this.state = {
@@ -36,12 +36,6 @@ class DefaultHeader extends React.Component{
     this.props.getMenu(this.state.menu)
   }
 
-  // areaClick(e){
-  //   this.setState({
-  //     menu: "area"
-  //   })
-  //   this.props.getMenu(this.state.menu)
-  // }
 
   barClick(e){
     this.setState({
@@ -92,15 +86,15 @@ class DefaultHeader extends React.Component{
             </SubMenu>
             <Menu.Item key="13" style={{ float: 'right' }}><Link to={`/`}><Icon type="poweroff" />Logout</Link></Menu.Item>
             {/* <SubMenu key="4" style={{ float: 'right' }} title={<span><Icon type="poweroff" /><span>Logout</span></span>}></SubMenu> */}
-            <SubMenu key="5" style={{ float: 'right' }} title={<span><Icon type="user" /><span>Username</span></span>}></SubMenu>
-            <SubMenu key="6"  title={<span><span>Timeline</span></span>}></SubMenu>
-            <SubMenu key="7" 
+            <SubMenu key="sub4" style={{ float: 'right' }} title={<span><Icon type="user" /><span>Username</span></span>}></SubMenu>
+            <SubMenu key="sub5"  title={<span><span>Timeline</span></span>}></SubMenu>
+            <SubMenu key="sub6" 
             style={{ float: 'right' }} 
             title={<span>
               <DatePicker defaultValue={moment('2015/01/01', dateFormat)} format={dateFormat} /></span>}>
             </SubMenu>
             
-            <SubMenu key="8" style={{ float: 'right' }} title={<span><ExpenseModal /></span>}></SubMenu>
+            <SubMenu key="sub7" style={{ float: 'right' }} title={<span><ExpenseModalButton /></span>}></SubMenu>
             </Menu>
 
           </Header>
@@ -109,4 +103,4 @@ class DefaultHeader extends React.Component{
   }
 }
 
-export default DefaultHeader;
+export default UserBoardHeader;

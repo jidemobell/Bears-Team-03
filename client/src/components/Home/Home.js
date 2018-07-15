@@ -1,11 +1,8 @@
 import React from 'react';
-//import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-//import * as userActions from '../../actions/User/UserActions'
 import { Layout, Card, Row, Col , Form, Icon, Input, Button, Checkbox } from 'antd';
 import './Home.css'
-// import LinkHeader from '../../container/Header/LinkHeader';
-// import LoginForm from '../login/Login';
+import PublicHeader from './../Header/PublicHeader';
+
 
 const FormItem = Form.Item;
 const mainback = require ('../../images/Cutting-Expenses.gif');
@@ -28,9 +25,7 @@ class HomeForm extends React.Component{
     return (
       <div>
         <Layout  >
-          <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-            <div className="logo" />
-          </Header>
+          <PublicHeader />
           <Content className='login-container' >
             <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
             <Row>
@@ -84,17 +79,5 @@ class HomeForm extends React.Component{
 }
 const Home = Form.create()(HomeForm);
 
-
-// const mapStatetToProps = (state) => {
-//   return { error: state.user.error }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     actions: bindActionCreators(Object.assign(userActions), dispatch)
-//   }
-// }
-
-// export default connect(mapStatetToProps, mapDispatchToProps)(Home)
 
 export default Home;

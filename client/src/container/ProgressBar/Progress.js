@@ -15,7 +15,7 @@ class ProgressLine extends React.Component{
         <Divider type="vertical" />
           </Col>
           <Col span={21}>
-        <Progress completed={this.props.value} style={{ marginTop: '6px' }} className="container" color={this.props.color} />
+         <Progress completed={this.props.value} style={{ marginTop: '6px' }} className="container" color={this.props.color} />
         </Col>
         </Row>
       </div>
