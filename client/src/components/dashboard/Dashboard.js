@@ -44,7 +44,9 @@ class Dashboard extends React.Component {
 
 
   render(){
+    if(this.props.user && this.props.user.user) {
     return (
+         <AuxComp>
          <div>
           <UserBoardHeader getMenu = {(val) => this.getMenu(val)} />
           <Layout>
@@ -83,7 +85,11 @@ class Dashboard extends React.Component {
           </Footer>
         </Layout>
         </div>
+        </AuxComp>
     )
+  } else {
+      return <div>No User</div>
+  } 
   }
 }
 

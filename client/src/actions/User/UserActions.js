@@ -29,7 +29,7 @@ export function signUp( {
             type: actionType.SIGN_UP
           })
           localStorage.setItem('token', response.data.token)
-          history.pushState('/dasboard')
+          history.pushState('/')
         }
       }).catch(error => {
         dispatch({
@@ -42,8 +42,11 @@ export function signUp( {
 
 
 export function userDashboard(){
+  alert('REACHING BOARD')
   return dispatch => {
+    
     let token = localStorage.getItem('token')
+    alert(`BOARD TOKEN  ${token}`)
     axios.get(`${URL.USER_URL}/dashboard`, {
       headers: {
         Authorizarion: `Bearer ${token}`
@@ -59,6 +62,7 @@ export function userDashboard(){
 
 
 export function signIn({userName,password}){
+  alert(`${userName} and ${password}`)
   return dispatch => {
     axios.post(`${URL.USER_URL}/login`, {
       userName,
@@ -66,6 +70,7 @@ export function signIn({userName,password}){
     } )
     .then(response => {
       if(response.status === 401){
+       // alert(`ERROR1 ${response.data}`)
         dispatch({
           type: actionType.USER_ERROR,
           payload: response.data.error
@@ -79,6 +84,7 @@ export function signIn({userName,password}){
       }
     }).catch(error => {
       if(error.response.status === 401){
+       // alert(`ERROR2 ${error}`)
         let errorMsg = 'Username or Password Incorrect'
         dispatch({
           type: actionType.USER_ERROR,
@@ -89,7 +95,7 @@ export function signIn({userName,password}){
   }
 }
 
-export function LogOut(){
+export function signOut(){
   localStorage.removeItem('token')
   return({
     type: actionType.LOGGED_OUT
@@ -97,10 +103,12 @@ export function LogOut(){
 }
 
 
-export function updateUser(user){
+export function updateUser({firstName, lastName, userName, email, password}){
   return dispatch => {
     let token = localStorage.getItem('token')
-    axios.post(`${URL.USER_URL}/update`, user).then(response => {
+    axios.post(`${URL.USER_URL}/update`, {
+       firstName, lastName, userName, email, password
+       },{ headers: { Authorization: `Bearer ${token}` } }).then(response => {
       if(response.data.success === false){
         dispatch({
           type: actionType.USER_ERROR,
