@@ -1,7 +1,11 @@
 import React from 'react';
 import { Layout, Card, Row, Col , Form, Icon, Input, Button, Checkbox } from 'antd';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import * as userActions from '../../actions/User/UserActions'
 import './Home.css'
 import PublicHeader from './../Header/PublicHeader';
+import RenderErrors from './../../hoc/RenderErros/RenderErrors';
 
 
 const FormItem = Form.Item;
@@ -14,7 +18,7 @@ class HomeForm extends React.Component{
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        this.props.actions.Home(values)
+        this.props.actions.signIn(values)
       }
     });
   }
@@ -79,5 +83,13 @@ class HomeForm extends React.Component{
 }
 const Home = Form.create()(HomeForm);
 
+const mapStatetToProps = (state) => {
+  return { error: state.user.error }
+}
 
-export default Home;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(Object.assign(userActions), dispatch)
+  }
+}
+export default connect(mapStatetToProps, mapDispatchToProps)(Home)

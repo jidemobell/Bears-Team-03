@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as userActions from '../../actions/User/UserActions'
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
 
@@ -34,4 +37,19 @@ class BarGraph extends React.Component{
   }
 }
 
-export default BarGraph;
+//export default BarGraph;
+
+const mapStatetToProps = (state) => {
+  return { 
+    expenses: state.expenses
+  }
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(Object.assign(userActions), dispatch)
+  }
+}
+
+export default connect(mapStatetToProps, mapDispatchToProps)(BarGraph)

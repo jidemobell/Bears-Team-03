@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as userActions from '../../actions/User/UserActions'
 import {LineChart, Line, XAxis, YAxis, 
   CartesianGrid, Tooltip, Legend} from 'recharts';
 import './Line.css'
@@ -73,4 +76,19 @@ class LineGraph extends React.Component{
   }
 }
 
-export default LineGraph;
+const mapStatetToProps = (state) => {
+  return { 
+    expenses: state.expenses
+  }
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(Object.assign(userActions), dispatch)
+  }
+}
+
+export default connect(mapStatetToProps, mapDispatchToProps)(LineGraph)
+
+//export default LineGraph;

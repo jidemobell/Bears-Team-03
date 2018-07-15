@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as userActions from '../../actions/User/UserActions'
 import {PieChart, Pie, Legend} from 'recharts';
 
 
@@ -34,4 +37,19 @@ class PieGraph extends React.Component{
   }
 }
 
-export default PieGraph;
+//export default PieGraph;
+
+const mapStatetToProps = (state) => {
+  return { 
+    expenses: state.expenses
+  }
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(Object.assign(userActions), dispatch)
+  }
+}
+
+export default connect(mapStatetToProps, mapDispatchToProps)(PieGraph)

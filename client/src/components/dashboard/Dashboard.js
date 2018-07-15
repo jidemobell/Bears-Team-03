@@ -1,5 +1,5 @@
 import React  from 'react';
-//import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as userActions from '../../actions/User/UserActions';
 import './Dashboard.css';
@@ -31,6 +31,10 @@ class Dashboard extends React.Component {
       }
      }
    }
+
+  componentWillMount() {
+    this.props.actions.userDashboard()
+  }
 
  getMenu(val){
    this.setState({
@@ -83,5 +87,19 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard
+const mapStatetToProps = (state) => {
+  return { 
+    user: state.user,
+    expenses: state.expenses,
+    incomes: state.incomes
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(Object.assign(userActions), dispatch)
+  }
+}
+
+export default connect(mapStatetToProps, mapDispatchToProps)(Dashboard)
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import './Register.css';
-//import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-//import * as userActions from '../../actions/User/UserActions'
+import * as userActions from '../../actions/User/UserActions'
 import { Form, Input, Tooltip, Icon, 
  Button, Layout, Card } from 'antd';
 
@@ -25,7 +25,7 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        this.props.actions.Register(values)
+        this.props.actions.signUp(values)
       }
     });
   }
@@ -135,9 +135,6 @@ class RegistrationForm extends React.Component {
           label={(
             <span>
               Username&nbsp;
-              {/* <Tooltip title="What do you want others to call you?">
-                <Icon type="question-circle-o" />
-              </Tooltip> */}
             </span>
           )}
         >
@@ -182,16 +179,16 @@ class RegistrationForm extends React.Component {
 
 const Register = Form.create()(RegistrationForm);
 
-export default Register
+//export default Register
 
-// const mapStatetToProps = (state) => {
-//   return { error: state.user.error }
-// }
+const mapStatetToProps = (state) => {
+  return { error: state.user.error }
+}
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     actions: bindActionCreators(Object.assign(userActions), dispatch)
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(Object.assign(userActions), dispatch)
+  }
+}
 
-// export default connect(mapStatetToProps, mapDispatchToProps)(Register)
+export default connect(mapStatetToProps, mapDispatchToProps)(Register)

@@ -37,6 +37,10 @@ const expense = {
     })
 })
 
+Router.get('/list',requireAuth, (req,res) => {
+  getAllExpenses()
+})
+
 
 
 
