@@ -15,7 +15,7 @@ import history from './hoc/History/History'
 class App extends Component {
   render() {
     return (
-         <AuxComp>
+          <AuxComp>
          <Router history={history}>
          <Switch>
            {/* <Route exact path='/home' component={Home} /> */}

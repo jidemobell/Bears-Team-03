@@ -1,5 +1,9 @@
 import React from 'react';
 import 'antd/dist/antd.css';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as userActions from '../../actions/User/UserActions'
+
 import { Layout,Card ,Form, Button, Input } from 'antd';
 import LinkHeader from '../../container/Header/LinkHeader';
 const {Content} = Layout;
@@ -13,9 +17,12 @@ class Expense extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
+         console.log('An erro occured at add expense')
       if (!err) {
         console.log('Received values of form: ', values);
+        this.props.actions.addExpense(values)
       }
+    //  this.props.error = err;
     });
   }
    
@@ -39,7 +46,7 @@ class Expense extends React.Component {
         <Content className="reg-container" >
         <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
         <Card title="Create Expense"  style={{ width: 450 }}  >
-        <Form layout="vertical">
+        <Form layout="vertical" onSubmit={this.handleSubmit}>
             <FormItem label="Name">
               {getFieldDecorator('name', {
                 rules: [{ required: true, message: 'Please input the expense name!' }],
@@ -78,4 +85,16 @@ class Expense extends React.Component {
 
 const AddExpense = Form.create()(Expense)
 
-export default AddExpense
+//export default AddExpense
+
+const mapStatetToProps = (state) => {
+  return { error: state.user.error }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(Object.assign(userActions), dispatch)
+  }
+}
+
+export default connect(mapStatetToProps, mapDispatchToProps)(AddExpense)

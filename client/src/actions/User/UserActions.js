@@ -3,6 +3,7 @@ import * as actionType from '../actionTypes'
 import * as URL from '../../urls/URL';
 import history from '../../hoc/History/History'
 
+
 export function signUp( {
   firstName,
   lastName,
@@ -42,16 +43,17 @@ export function signUp( {
 
 
 export function userDashboard(){
-  alert('REACHING BOARD')
+ 
   return dispatch => {
     
     let token = localStorage.getItem('token')
-    alert(`BOARD TOKEN  ${token}`)
+   
     axios.get(`${URL.USER_URL}/dashboard`, {
       headers: {
         Authorizarion: `Bearer ${token}`
       }
     }).then(response => {
+      
       dispatch({
         type: actionType.USER_DASHBOARD,
         payload: response.data
@@ -62,7 +64,7 @@ export function userDashboard(){
 
 
 export function signIn({userName,password}){
-  alert(`${userName} and ${password}`)
+ 
   return dispatch => {
     axios.post(`${URL.USER_URL}/login`, {
       userName,
@@ -70,7 +72,7 @@ export function signIn({userName,password}){
     } )
     .then(response => {
       if(response.status === 401){
-       // alert(`ERROR1 ${response.data}`)
+       
         dispatch({
           type: actionType.USER_ERROR,
           payload: response.data.error
@@ -80,11 +82,10 @@ export function signIn({userName,password}){
           type: actionType.SIGN_IN,
         })
         localStorage.setItem('token', response.data.token)
-        history.push('/dashoard')
+        history.push('/dashboard')
       }
     }).catch(error => {
       if(error.response.status === 401){
-       // alert(`ERROR2 ${error}`)
         let errorMsg = 'Username or Password Incorrect'
         dispatch({
           type: actionType.USER_ERROR,
@@ -126,8 +127,15 @@ export function updateUser({firstName, lastName, userName, email, password}){
   }
 }
 
+// {
+//   date,
+//   name,
+//   paidWith,
+//   amount,
+//   category
+// }
+
 export function addExpense({
-  date,
   name,
   paidWith,
   amount,
@@ -136,7 +144,6 @@ export function addExpense({
     return dispatch => {
       let token = localStorage.getItem('token')
       axios.post(`${URL.EXPENSE_URL}/create`,{
-        date,
         name,
         paidWith,
         amount,

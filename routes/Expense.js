@@ -9,13 +9,14 @@ const requireAuth = passport.authenticate('jwt', { session: false })
 const  _ = require('lodash')
 
 //Add an expense
-Router.post('/create', requireAuth, (req, res) => {
+Router.post('/create',requireAuth, (req, res) => {
+console.log('CREATING EXPENSE')
 const expense = {
-     date: req.body.date,
+    // date: req.body.date,
      name: req.body.name,
      paidWith: req.body.paidWith,
-     frequency: req.body.frequency,
-     color: req.body.color,
+     //frequency: req.body.frequency,
+    // color: req.body.color,
     // description: req.body.description,
      amount: req.body.amount,
      amcategory: req.body.category,

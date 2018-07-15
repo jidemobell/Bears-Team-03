@@ -49,9 +49,12 @@ module.exports.createUser= (req, res, next) => {
   })
 }
 
-// Sign In User
+// Sign In UserresizeBy
 module.exports.signIn = (req, res) => {
-  console.log('SIGN REQ',req)
+  console.log('SIGN RES : ',{
+    body: res.req.body,
+    user: res.req.user
+  })
   res.json({
     success: true,
     token: userToken(req.user)
@@ -60,8 +63,10 @@ module.exports.signIn = (req, res) => {
 
 // User Dashboard
 module.exports.userDashboard = (req, res) => {
+  console.log('GOING TO USERS BOARD')
   User.findOne({ '_id': req.user._id }, '-password', (err, user) => {
     if(err) {
+      console.log('error1',err)
       res.json({
         success: false,
         error: err
@@ -69,6 +74,7 @@ module.exports.userDashboard = (req, res) => {
     } else {
         Expense.find({'user': req.user._id}, (err, expenses) => {
           if(err) {
+            console.log('error2',err)
             res.json({
               success: false,
               error: err
@@ -76,11 +82,13 @@ module.exports.userDashboard = (req, res) => {
           } else {
               Income.find({'user': req.user._id}, (err, incomes) => {
                 if(err) {
+                  console.log('error3',err)
                   res.json({
                     success: false,
                     error: err
                   })
                 } else {
+                  console.log('USER BOARD CALLED')
                   res.json({
                     success: true,
                     user: user,

@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 var DateOnly = require('mongoose-dateonly')(mongoose);
 
 const ExpenseSchema = new  mongoose.Schema({
-  date: {
-    type: DateOnly
-  },
+  // date: {
+  //   type: DateOnly
+  // },
   name: {
     type: String,
     required: true,
@@ -23,17 +23,17 @@ const ExpenseSchema = new  mongoose.Schema({
   category: {
     type: String
   },
-  frequency: {
-    type: String
-  }, 
-  color: String,
+  // frequency: {
+  //   type: String
+  // }, 
+  // color: String,
   // category : [{
   //   description : String,  //etc food,grocery,transport
   //   amount : String 
   //    }],
   user: { type: mongoose.Schema.ObjectId, ref: "User" }
 },
- {timestamps: { createdAt: 'date' }}
+ //{timestamps: { createdAt: 'date' }}
 )
 
 

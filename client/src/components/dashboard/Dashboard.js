@@ -1,9 +1,9 @@
 import React  from 'react';
+import './Dashboard.css';
+import 'antd/dist/antd.css';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as userActions from '../../actions/User/UserActions';
-import './Dashboard.css';
-import 'antd/dist/antd.css';
 import { Layout,Breadcrumb, Divider, Row, Col,Card  } from 'antd';
 import ProgessLine from '../../container/ProgressBar/Progress';
 import TimeLiner from '../../container/Timeline/TimeLiner';
