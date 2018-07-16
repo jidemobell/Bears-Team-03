@@ -14,7 +14,6 @@ const storeMiddleware = applyMiddleware(Async, reduxThunk)(createStore)
 const store = storeMiddleware(rootReducer);
 
 const token = localStorage.getItem('token');
-console.log(`TOKEN: ${token}`)
 if(token){
   store.dispatch({
     type: LOGGED_IN
