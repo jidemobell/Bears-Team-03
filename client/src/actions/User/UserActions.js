@@ -50,15 +50,27 @@ export function userDashboard(){
    
     axios.get(`${URL.USER_URL}/dashboard`, {
       headers: {
-        Authorizarion: `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       }
     }).then(response => {
-      
       dispatch({
         type: actionType.USER_DASHBOARD,
         payload: response.data
       })
+    }).catch(error => {
+      console.log('userboard error:', error)
     })
+  }
+}
+
+export function dashBoardHeader(menuGraph){
+  return dispatch=>{
+    dispatch(
+      {
+        type:actionType.USER_HEADER,
+        payload: menuGraph
+      }
+    )
   }
 }
 
@@ -78,8 +90,10 @@ export function signIn({userName,password}){
           payload: response.data.error
         })
       }else{
+       // console.log('response: ',response.data)
         dispatch({
           type: actionType.SIGN_IN,
+         // payload: response.data
         })
         localStorage.setItem('token', response.data.token)
         history.push('/dashboard')

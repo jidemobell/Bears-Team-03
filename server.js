@@ -3,7 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const passport = require('passport')
+const Passport = require('./Services/Passport')
 const morgan = require('morgan')
 
 const User = require('./routes/User')
@@ -11,6 +11,7 @@ const Expense = require('./routes/Expense')
 const Income = require('./routes/Income')
 
 // Initialize Server, Port and DB Setup
+
 
 const Server = express()
 const Port = process.env.port || 4000
@@ -39,7 +40,7 @@ Server.use(bodyParser.json()) // Adds a body to the request so we can send data 
 Server.use('/user', User)
 Server.use('/expense', Expense)
 Server.use('/income', Income)
-Server.use(passport.initialize()) // Initialize the Passport middleware
+Server.use(Passport.initialize()) // Initialize the Passport middleware
 
 // Start Server
 Server.listen(Port, (err) => {

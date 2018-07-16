@@ -19,7 +19,7 @@ class LinkHeader extends React.Component{
              defaultSelectedKeys={['2']}
              style={{ lineHeight: '64px' }}
             >
-            <Menu.Item key="1" ><Link to={`/user`}>Home</Link></Menu.Item>
+            <Menu.Item key="1" ><Link to={`/dashboard`}>Home</Link></Menu.Item>
             <SubMenu key="sub1" style={{ float: 'right' }} title={<span><Icon type="poweroff" /><span>Logout</span></span>}></SubMenu>
             </Menu  >
           </Header>

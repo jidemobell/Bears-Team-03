@@ -1,11 +1,12 @@
 const Router = require('express').Router()
-const passport = require('passport')
+//const passport = require('passport')
+const passport = require('../Services/Passport')
 const {createExpense,
   getAllExpenses,
   getExpenseByDate} = require('../controllers/expenses')
 const Expense = require('../models/Expense')
 const requireSignin = passport.authenticate('local', { session: false })
-const requireAuth = passport.authenticate('jwt', { session: false })
+const requireAuth = passport.authenticate('jwt-local', { session: false })
 const  _ = require('lodash')
 
 //Add an expense

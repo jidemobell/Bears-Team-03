@@ -1,12 +1,16 @@
 const Router = require('express').Router()
-const passport = require('passport')
-const passportService = require('../Services/Passport')
+const passport = require('../Services/Passport')
 
 const User = require('../models/User')
 const Authentication = require('../controllers/Authentication')
 
+
+//localLogin,jwtLogin
 const requireSigin = passport.authenticate('local', { session: false })
+
 const requireAuth = passport.authenticate('jwt', { session: false })
+
+
 
 // Create User
 Router.post('/create', Authentication.createUser)
@@ -18,6 +22,6 @@ Router.post('/login', requireSigin, Authentication.signIn)
 Router.post('/update', requireAuth, Authentication.updateUser)
 
 // User Dashboard
-Router.get('/dashboard', requireAuth, Authentication.userDashboard)
+Router.get('/dashboard',requireAuth, Authentication.userDashboard) //add requireAuth back
 
 module.exports = Router 

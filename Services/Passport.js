@@ -1,13 +1,14 @@
 const Passport = require('passport')
 const JwtStrategy = require('passport-jwt').Strategy
 const ExtractJwt = require('passport-jwt').ExtractJwt
-const LocalStrategy = require('passport-local')
+const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt')
 
 const User = require('../models/User')
 
 // Local Strategy
 const opts = { usernameField: 'userName' }
+
 const localLogin = new LocalStrategy(opts, (userName, password, done) => {
   // Find User
   User.findOne({ userName: userName }, (err, user) => {
@@ -42,7 +43,7 @@ const jwtOptions = {
 const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
   User.findById(payload.sub, { password: 0 }, (err, user) => {
     if(err) { return done(err, false) }
-
+     console.log('jwt error',err)
     if(user) { return done(null, user) }
 
     return done(null, null)
@@ -52,3 +53,5 @@ const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
 // Tell passport to use theses strategies
 Passport.use(jwtLogin)
 Passport.use(localLogin)
+
+module.exports = Passport;

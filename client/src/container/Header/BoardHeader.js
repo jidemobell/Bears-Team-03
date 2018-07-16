@@ -1,6 +1,9 @@
 import React  from 'react';
 import { Link } from 'react-router-dom'
 import 'antd/dist/antd.css';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as userActions from '../../actions/User/UserActions'
 import { Layout, Menu, Icon, DatePicker} from 'antd';
 import ExpenseModalButton from '../Expense/ExpenseModal';
 import moment from 'moment';
@@ -15,33 +18,21 @@ const dateFormat = 'YYYY/MM/DD';
 class UserBoardHeader extends React.Component{
   constructor(props){
     super(props);
-    this.state = {
-      menu: null
-    }
-    
 
   }
   
   lineClick(e){
-    this.setState({
-      menu: "line"
-    })
-    this.props.getMenu(this.state.menu)
+    this.props.actions.dashBoardHeader('line')
+
   }
 
   pieClick(e){
-    this.setState({
-      menu: "pie"
-    })
-    this.props.getMenu(this.state.menu)
+    this.props.actions.dashBoardHeader('pie')
   }
 
 
   barClick(e){
-    this.setState({
-      menu: "bar"
-    })
-    this.props.getMenu(this.state.menu)
+    this.props.actions.dashBoardHeader('bar')
   }
 
   render(){
@@ -64,7 +55,7 @@ class UserBoardHeader extends React.Component{
               <Menu.Item key="1"  onClick={e=>this.lineClick(e)}><Icon type="line-chart" />line-chart</Menu.Item>
               <Menu.Item key="2"  onClick={e=>this.pieClick(e)}><Icon type="pie-chart" />pie-chart</Menu.Item>
               <Menu.Item key="3" onClick={e=>this.barClick(e)}><Icon type="bar-chart" />bar-chart</Menu.Item>
-              {/* <Menu.Item key="4" onClick={e => this.areaClick(e)}><Icon type="area-chart" />area-chart</Menu.Item> */}
+
             </SubMenu>
             <SubMenu
               key="sub2"
@@ -85,8 +76,7 @@ class UserBoardHeader extends React.Component{
               <Menu.Item key="12">Earnings</Menu.Item>
             </SubMenu>
             <Menu.Item key="13" style={{ float: 'right' }}><Link to={`/`}><Icon type="poweroff" />Logout</Link></Menu.Item>
-            {/* <SubMenu key="4" style={{ float: 'right' }} title={<span><Icon type="poweroff" /><span>Logout</span></span>}></SubMenu> */}
-            <SubMenu key="sub4" style={{ float: 'right' }} title={<span><Icon type="user" /><span>Username</span></span>}></SubMenu>
+            <SubMenu key="sub4" style={{ float: 'right' }} title={<span><Icon type="user" /><span>{this.props.boardUser}</span></span>}></SubMenu>
             <SubMenu key="sub5"  title={<span><span>Timeline</span></span>}></SubMenu>
             <SubMenu key="sub6" 
             style={{ float: 'right' }} 
@@ -103,4 +93,17 @@ class UserBoardHeader extends React.Component{
   }
 }
 
-export default UserBoardHeader;
+
+
+const mapStatetToProps = (state) => {
+  console.log(' state at header',state)
+  return { user: state.user.user }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(Object.assign(userActions), dispatch)
+  }
+}
+
+export default connect(mapStatetToProps, mapDispatchToProps)(UserBoardHeader)

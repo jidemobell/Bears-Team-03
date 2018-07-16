@@ -19,7 +19,7 @@ class App extends Component {
          <Router history={history}>
          <Switch>
            {/* <Route exact path='/home' component={Home} /> */}
-           <Route  path='/dashboard' component={Dashboard} />
+           <Route  path='/dashboard' component={Auth(Dashboard)} />
            <Route  exact path='/' component={Home} />
            <Route  path='/login' component={Login} />
            <Route  path='/register' component={Register} />

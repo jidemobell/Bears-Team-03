@@ -51,22 +51,24 @@ module.exports.createUser= (req, res, next) => {
 
 // Sign In UserresizeBy
 module.exports.signIn = (req, res) => {
-  console.log('SIGN RES : ',{
-    body: res.req.body,
-    user: res.req.user
-  })
+  // console.log('SIGN RES : ',{
+  //   body: res.req.body,
+  //   user_details: res.req.user
+  // })
   res.json({
     success: true,
+    user: res.req.user,
     token: userToken(req.user)
   })
 }
 
 // User Dashboard
 module.exports.userDashboard = (req, res) => {
+  console.log('REQUEST', req.headers)
   console.log('GOING TO USERS BOARD')
   User.findOne({ '_id': req.user._id }, '-password', (err, user) => {
     if(err) {
-      console.log('error1',err)
+      console.log('find user error', err)
       res.json({
         success: false,
         error: err
@@ -74,21 +76,20 @@ module.exports.userDashboard = (req, res) => {
     } else {
         Expense.find({'user': req.user._id}, (err, expenses) => {
           if(err) {
-            console.log('error2',err)
+            console.log('find expense error', err)
             res.json({
               success: false,
               error: err
             })
           } else {
               Income.find({'user': req.user._id}, (err, incomes) => {
+                console.log('find income error', err)
                 if(err) {
-                  console.log('error3',err)
                   res.json({
                     success: false,
                     error: err
                   })
                 } else {
-                  console.log('USER BOARD CALLED')
                   res.json({
                     success: true,
                     user: user,

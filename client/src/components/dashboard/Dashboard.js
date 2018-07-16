@@ -17,38 +17,47 @@ const { Content, Footer } = Layout;
 class Dashboard extends React.Component {
    constructor(props){
     super(props) 
-    this.state = {
-       menu: 'pie',
-      barOneValue: {
-        name:'CASH',   //hardcoded entries for test
-        value: 80,
-        color: '#1890FF'
-      },
-      barTwoValue: {
-        name:'CARD',              
-        value: 59,
-        color: '#001529'
-      }
-     }
+    // this.state = {
+    //    menu: 'pie',
+    //   barOneValue: {
+    //     name:'CASH',   //hardcoded entries for test
+    //     value: 80,
+    //     color: '#1890FF'
+    //   },
+    //   barTwoValue: {
+    //     name:'CARD',              
+    //     value: 59,
+    //     color: '#001529'
+    //   }
+    //  }
    }
 
   componentWillMount() {
     this.props.actions.userDashboard()
+
   }
 
- getMenu(val){
-   this.setState({
-     menu: val
-   })
- }
+
+//  getMenu(val){
+//    this.setState({
+//      menu: val
+//    })
+//  }
+
+getUserName(){
+  if(!this.state.user.user === undefined){
+    console.log('not rendered yet')
+  }
+  console.log('rendered', this.state.user.user.userName)
+}
 
 
   render(){
-    if(this.props.user && this.props.user.user) {
     return (
          <AuxComp>
          <div>
-          <UserBoardHeader getMenu = {(val) => this.getMenu(val)} />
+          {/* <UserBoardHeader getMenu = {(val) => this.getMenu(val)} /> */}
+          <UserBoardHeader   boardUser={this.props.user === undefined ? '': this.props.user.userName}/>
           <Layout>
           <Content style={{ padding: '0 50px', marginTop: 64 }}>
             <br />
@@ -57,20 +66,26 @@ class Dashboard extends React.Component {
 
              <Row>
                <Col span={12}> 
-               <GraphDisplay menu={this.state.menu} />
+               {/* <GraphDisplay menu={this.state.menu} /> */}
+               <GraphDisplay menu={this.props.graph} />
                </Col>
                <Col span={12}  style={{ marginTop: '-20px' }}>
                <Divider orientation="left" > Date Here
                </Divider>  
                 <Card style={{ padding: '3px' }}>
-                <ProgessLine 
+                
+                {/* <ProgessLine 
                 value={this.state.barOneValue.value} 
                 color={this.state.barOneValue.color}
-                name ={this.state.barOneValue.name}/>
+                name ={this.state.barOneValue.name}/> */}
+                {/* <ProgessLine 
+                value={this.props.expenses.amount}    //configure as select option
+                color={this.props.expenses.color}       //configure as select option
+                name ={this.props.expenses.category}/>
                 <ProgessLine 
                 value={this.state.barTwoValue.value} 
                 color={this.state.barTwoValue.color}
-                name ={this.state.barTwoValue.name}/>
+                name ={this.state.barTwoValue.name}/> */}
                 </Card>
                 <Card>
                   <TimeLiner />
@@ -87,17 +102,18 @@ class Dashboard extends React.Component {
         </div>
         </AuxComp>
     )
-  } else {
-      return <div>No User</div>
-  } 
   }
 }
 
+
+
 const mapStatetToProps = (state) => {
+  console.log('users at board: ', state.user.user)
   return { 
-    user: state.user,
+    user: state.user.user,
     expenses: state.expenses,
-    incomes: state.incomes
+    incomes: state.incomes,
+    graph: state.user.graph
   }
 }
 
