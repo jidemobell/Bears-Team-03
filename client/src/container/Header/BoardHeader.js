@@ -57,7 +57,7 @@ class UserBoardHeader extends React.Component{
               <Menu.Item key="3" onClick={e=>this.barClick(e)}><Icon type="bar-chart" />bar-chart</Menu.Item>
 
             </SubMenu>
-            <SubMenu
+            {/* <SubMenu
               key="sub2"
               title={<span><Icon type="down-square-o" /><span>Category</span></span>}
             >
@@ -65,15 +65,16 @@ class UserBoardHeader extends React.Component{
               <Menu.Item key="6">Food</Menu.Item>
               <Menu.Item key="7">Health</Menu.Item>
               <Menu.Item key="8">Other</Menu.Item>
-            </SubMenu>
+            </SubMenu> */}
             <SubMenu
               key="sub3"
               title={<span><Icon type="down-square-o" /><span>Expense</span></span>}
             >
-              <Menu.Item key="9"><Link to={`/expense`}>Add Expense</Link></Menu.Item>
+              {/* <Menu.Item key="9"><Link to={`/expense`}>Add Expense</Link></Menu.Item> */}
               <Menu.Item key="10">Monthly Budget Overview</Menu.Item>
-              <Menu.Item key="11">Budget Allocator</Menu.Item>
-              <Menu.Item key="12">Earnings</Menu.Item>
+              <Menu.Item key="11"><Link to={`/expensetable`}>Monthly Expense Overview</Link></Menu.Item>
+              <Menu.Item key="12">Budget Allocator</Menu.Item>
+              <Menu.Item key="13">Earnings</Menu.Item>
             </SubMenu>
             <Menu.Item key="13" style={{ float: 'right' }}><Link to={`/`}><Icon type="poweroff" />Logout</Link></Menu.Item>
             <SubMenu key="sub4" style={{ float: 'right' }} title={<span><Icon type="user" /><span>{this.props.boardUser}</span></span>}></SubMenu>

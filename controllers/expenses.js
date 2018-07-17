@@ -6,15 +6,9 @@ module.exports = {
      createExpense(body){
        return new Expense(
         { 
-        //  date: `${body.date}`,
+          date: `${body.date}`,
           name: `${body.name}`,
           paidWith: `${body.paidWith}`,
-        //  color: `${body.color}`,
-         // frequency: `${body.frequency}`,
-          // category: [{
-          //   description: `${body.description}`,
-          //   amount: `${body.amount}`
-          // }],
           amount: `${body.amount}`,
           category: `${body.category}`,
           user:`${body.user}`

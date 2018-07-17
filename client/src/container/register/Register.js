@@ -86,7 +86,8 @@ class RegistrationForm extends React.Component {
           </Header>
         <Content className="reg-container" >
         <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
-        <Card title="SignUp"  style={{ width: 450 }}  >
+        {/* style={{ width: 450 }} */}
+        <Card title="SignUp"  style={{ width: 450 }}  > 
       <Form onSubmit={this.handleSubmit} >
         <FormItem
           {...formItemLayout}

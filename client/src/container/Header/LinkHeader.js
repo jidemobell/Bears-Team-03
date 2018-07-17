@@ -20,7 +20,9 @@ class LinkHeader extends React.Component{
              style={{ lineHeight: '64px' }}
             >
             <Menu.Item key="1" ><Link to={`/dashboard`}>Home</Link></Menu.Item>
+           
             <SubMenu key="sub1" style={{ float: 'right' }} title={<span><Icon type="poweroff" /><span>Logout</span></span>}></SubMenu>
+            <SubMenu key="sub2" style={{ float: 'right' }} title={<span><Icon type="user" /><span>{this.props.boardUser}</span></span>}></SubMenu>
             </Menu  >
           </Header>
     )

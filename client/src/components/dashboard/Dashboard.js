@@ -10,6 +10,8 @@ import TimeLiner from '../../container/Timeline/TimeLiner';
 import AuxComp from './../../hoc/AuxComp/AuxComp';
 import UserBoardHeader from './../../container/Header/BoardHeader';
 import GraphDisplay from './../Graph/GraphDisplay';
+import Day from './../Moment/Day';
+import MonthlyExpenseAccumulator from '../../container/Tables/BoardExpenseTable';
 
 const { Content, Footer } = Layout;
 
@@ -66,13 +68,13 @@ getUserName(){
 
              <Row>
                <Col span={12}> 
-               {/* <GraphDisplay menu={this.state.menu} /> */}
                <GraphDisplay menu={this.props.graph} />
                </Col>
                <Col span={12}  style={{ marginTop: '-20px' }}>
-               <Divider orientation="left" > Date Here
+               <Divider orientation="left" > <Day />
                </Divider>  
                 <Card style={{ padding: '3px' }}>
+                 <MonthlyExpenseAccumulator />
                 
                 {/* <ProgessLine 
                 value={this.state.barOneValue.value} 
